@@ -1,0 +1,32 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+if [ ! -f /root/.config/asm/radius-nas.cfg ]; then
+    # Setting hostname according to defined organization:
+    SN="$(dmidecode -s system-serial-number)"
+    if [ ! -z "$SN" ] && [ $SN != "OpenWRT" ] && [ $SN != "Not Specified" ] && [ "$SN-owrt" != "$HOSTNAME" ] && [ "$SN" != "HOSTNAME-org_slug" ]; then
+        uci set system.@system[0].hostname="${SN}-owrt"
+        uci commit system
+        /etc/init.d/system reload
+        echo "Hostname updated..."
+
+        # Setting symlink for ACME issue hook:
+        ln -s /etc/hotplug.d/acme/renewed /etc/hotplug.d/acme/issued
+
+        # Setting Zabbix agent:
+        sed -i "s/META_TAG/${SN}/g" /etc/zabbix_agentd.conf
+
+        # Setting shared secret for OpenWRT registration in defined OpenWisp2 organization:
+        ORG_PSK="$(dmidecode -s system-family)"
+        UCI_PSK="$(uci get openwisp.http.shared_secret)"
+        if [ "$ORG_PSK" != "$UCI_PSK" ] && [ "$ORG_PSK" != "OpenWisp-REG-PSK-HERE" ]; then
+            uci set openwisp.http.shared_secret="$ORG_PSK"
+            uci commit openwisp
+            /etc/init.d/openwisp_config reload
+            /etc/init.d/openwisp_config enable
+            /etc/init.d/openwisp_config restart
+            echo "OpenWisp configuration updated..."
+        fi
+    fi
+fi
+exit 0

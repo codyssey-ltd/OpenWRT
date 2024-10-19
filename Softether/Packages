@@ -1,0 +1,34 @@
+Package: softethervpn-base
+Version: 4.38-9760-2
+Depends: libc, libpthread, librt, libreadline8, libopenssl3, libncurses6, kmod-tun, zlib
+License: GPL-2.0-or-later
+Section: net
+Architecture: x86_64
+Installed-Size: 2938377
+Filename: softethervpn-base_4.38-9760-2_x86_64.ipk
+Size: 2939736
+SHA256sum: fbac22de80de5f522ce341820720a21dd4b0395489f5620633aae65b9669e42f
+Description:  SoftEther VPN ("SoftEther" means "Software Ethernet") is one of the world's most powerful and easy-to-use multi-protocol VPN software developed as an academic
+ project from University of Tsukuba, Japan. SoftEther VPN has strong compatibility to today's most popular VPN products among the world. It has the interoperability
+ with OpenVPN, L2TP, IPsec, EtherIP, L2TPv3, Cisco VPN Routers and MS-SSTP VPN Clients. SoftEther VPN is the world's only VPN software which supports SSL-VPN,
+ OpenVPN, L2TP, EtherIP, L2TPv3 and IPsec as a single VPN software. SoftEther VPN is not only an alternative VPN server to existing VPN products (OpenVPN,
+ IPsec and MS-SSTP), but has also original strong SSL-VPN protocol to penetrate any kinds of firewalls. Ultra-optimized SSL-VPN Protocol of SoftEther VPN
+ has very fast throughput, low latency and firewall resistance.
+
+Package: softethervpn-server
+Version: 4.38-9760-2
+Depends: libc, softethervpn-base
+License: GPL-2.0-or-later
+Section: net
+Architecture: x86_64
+Installed-Size: 935834
+Filename: softethervpn-server_4.38-9760-2_x86_64.ipk
+Size: 936601
+SHA256sum: bcf5ead7d58a6f97b793d0d36fbb1f1a0fa96da98c09d6ffc6a3947b3037facf
+Description:  SoftEther VPN ("SoftEther" means "Software Ethernet") is one of the world's most powerful and easy-to-use multi-protocol VPN software developed as an academic
+ project from University of Tsukuba, Japan. SoftEther VPN has strong compatibility to today's most popular VPN products among the world. It has the interoperability
+ with OpenVPN, L2TP, IPsec, EtherIP, L2TPv3, Cisco VPN Routers and MS-SSTP VPN Clients. SoftEther VPN is the world's only VPN software which supports SSL-VPN,
+ OpenVPN, L2TP, EtherIP, L2TPv3 and IPsec as a single VPN software. SoftEther VPN is not only an alternative VPN server to existing VPN products (OpenVPN,
+ IPsec and MS-SSTP), but has also original strong SSL-VPN protocol to penetrate any kinds of firewalls. Ultra-optimized SSL-VPN Protocol of SoftEther VPN
+ has very fast throughput, low latency and firewall resistance.
+

@@ -1,0 +1,16 @@
+#!/bin/ash
+
+#/etc/openwisp/pre-reload-hook
+
+FILES="/usr/bin/*.asm"
+for script in $FILES; do
+  echo "Processing $f file..."
+  $script
+done
+
+SERVICES="$(sort "/tmp/restart-services"  | uniq)"
+for SRV in $SERVICES; do
+  echo "Restarting $SRV..."
+  /etc/init.d/$SRV restart
+done
+rm -f "/tmp/restart-services"
