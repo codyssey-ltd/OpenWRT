@@ -16,7 +16,7 @@ config acme
 config cert '$CERT_SLUG'
 	option use_staging '0'
 	option enabled '1'
-	option staging '1'
+	option staging '0'
 	option key_type 'rsa2048'
 	list domains '$ORG_SLUG.asm.co.il'
 	option update_uhttpd '1'
@@ -26,6 +26,7 @@ config cert '$CERT_SLUG'
 	list credentials 'CF_Account_ID=${CF_Account_ID}'
 	list credentials 'CF_Zone_ID=${CF_Zone_ID}'
 	option days '60'
+	option user_cleanup '/etc/hotplug.d/acme/renewed'
 END
 	md5sum "/root/.config/asm/acme.env" >"/root/.config/asm/acme.env.md5"
     uci commit acme
