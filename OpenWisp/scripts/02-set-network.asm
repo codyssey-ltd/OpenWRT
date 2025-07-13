@@ -10,6 +10,7 @@ if [ "$ip" != "10.149.${VLAN}.254" ];then
     uci set network.lan.ipaddr="10.149.${VLAN}.254"
     uci set dhcp.dnsmasq1.domain="${ORG_SLUG}.asm"
     uci set dhcp.dnsmasq1.local="/${ORG_SLUG}.asm/"
+    uci add_list dhcp.@dnsmasq[0].server='/altec.asm.co.il/10.87.131.250'
 
     # Setup SecureNAT on Softether VPN server
     MAC=$(hexdump -n3 -e'/3 "AE-9B-9E" 3/1 "-%02X"' /dev/random)
