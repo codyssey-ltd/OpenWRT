@@ -3,8 +3,11 @@
 #/usr/bin/04-set-firewall.asm
 
 source /root/.config/asm/asm.env
+# Capture the 3rd octet of eth1 (WAN) IP address
+PVE_NODE_OCTET=$(ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | cut -d' ' -f1 | cut -d. -f3)
 # Configure and reorder custom Firewall rules
 sed -i "s/VLAN/${VLAN}/g" /etc/config/firewall
+sed -i "s/PVE_NODE/${PVE_NODE_OCTET}/g" /etc/config/firewall
 for r in $(seq 0 99); do
     uci reorder firewall.rule${r}=${r} > /dev/null 2>&1
 done
